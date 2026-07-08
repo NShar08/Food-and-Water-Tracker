@@ -6,31 +6,82 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #f5f5f5;
     min-height: 100vh;
+}
+
+.navbar {
+    background: #667eea;
+    color: white;
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-container h1 {
+    font-size: 1.8em;
+}
+
+.nav-links {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s;
+}
+
+.nav-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.nav-btn.active {
+    background: white;
+    color: #667eea;
+}
+
+.page-container {
+    max-width: 1400px;
+    margin: 0 auto;
     padding: 20px;
 }
 
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
     background: white;
-    border-radius: 20px;
+    border-radius: 15px;
     padding: 30px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-header {
+.date-header {
     text-align: center;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid #f0f0f0;
-}
-
-header h1 {
-    color: #333;
-    font-size: 2.5em;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .date {
@@ -40,14 +91,63 @@ header h1 {
 
 .profile-section {
     background: #f8f9fa;
-    padding: 20px;
+    padding: 25px;
     border-radius: 15px;
     margin-bottom: 30px;
 }
 
 .profile-section h2 {
     color: #333;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.profile-inputs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.input-group label {
+    font-weight: 600;
+    color: #555;
+    font-size: 0.9em;
+}
+
+.input-group input,
+.input-group select {
+    padding: 10px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1em;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.btn-calculate {
+    background: #40c057;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background 0.3s;
+}
+
+.btn-calculate:hover {
+    background: #37b24d;
 }
 
 .goals-grid {
@@ -74,17 +174,6 @@ header h1 {
     border: 2px solid #e0e0e0;
     border-radius: 8px;
     font-size: 1em;
-    transition: border-color 0.3s;
-}
-
-.goal-input input:focus {
-    outline: none;
-    border-color: #667eea;
-}
-
-.goal-input span {
-    color: #888;
-    font-size: 0.85em;
 }
 
 .btn-save {
@@ -109,13 +198,14 @@ header h1 {
     margin-bottom: 30px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .tracker-section {
         grid-template-columns: 1fr;
     }
 }
 
-.water-section, .food-section {
+.water-section,
+.food-section {
     background: #f8f9fa;
     padding: 20px;
     border-radius: 15px;
@@ -191,9 +281,73 @@ h2 {
     font-size: 0.95em;
 }
 
+.food-search {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.food-search input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1em;
+}
+
+.btn-search {
+    background: #4c6ef5;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-search:hover {
+    background: #3b5bdb;
+}
+
+.search-results {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+
+.search-result-item {
+    background: white;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+    border: 1px solid #e0e0e0;
+}
+
+.search-result-item:hover {
+    background: #f0f0f0;
+}
+
+.search-result-item h4 {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.search-result-item p {
+    font-size: 0.85em;
+    color: #666;
+}
+
+.manual-entry h3 {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    color: #555;
+}
+
 .add-food-form {
     display: grid;
-    grid-template-columns: 2fr repeat(4, 1fr);
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
     gap: 10px;
     margin-bottom: 20px;
 }
@@ -251,9 +405,10 @@ h2 {
 
 .food-nutrients {
     display: flex;
-    gap: 15px;
+    gap: 10px;
     font-size: 0.85em;
     color: #666;
+    flex-wrap: wrap;
 }
 
 .food-nutrients span {
@@ -270,6 +425,7 @@ h2 {
     border-radius: 6px;
     cursor: pointer;
     transition: background 0.3s;
+    white-space: nowrap;
 }
 
 .btn-remove:hover {
@@ -328,19 +484,73 @@ h2 {
     font-size: 0.95em !important;
 }
 
+.saved-entries-section {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
+
+.saved-entries-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.entry-item {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.entry-info h4 {
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.entry-stats {
+    display: flex;
+    gap: 15px;
+    font-size: 0.9em;
+    color: #666;
+    flex-wrap: wrap;
+}
+
+.entry-stats span {
+    background: #f0f0f0;
+    padding: 4px 10px;
+    border-radius: 5px;
+}
+
 .actions {
     display: flex;
     gap: 15px;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
-.btn-reset, .btn-export {
+.btn-save-entry,
+.btn-reset,
+.btn-export {
     padding: 12px 30px;
     border: none;
     border-radius: 8px;
     font-size: 1em;
     cursor: pointer;
     transition: background 0.3s;
+}
+
+.btn-save-entry {
+    background: #40c057;
+    color: white;
+}
+
+.btn-save-entry:hover {
+    background: #37b24d;
 }
 
 .btn-reset {
@@ -359,4 +569,70 @@ h2 {
 
 .btn-export:hover {
     background: #3b5bdb;
+}
+
+.analytics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+    .analytics-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.chart-container {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.chart-container h3 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.chart-container canvas {
+    max-height: 300px;
+}
+
+.stats-section {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.stats-section h3 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.stat-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card h4 {
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+.stat-card p {
+    color: #333;
+    font-size: 1.8em;
+    font-weight: bold;
 }
