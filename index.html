@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrition & Water Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🥗 Nutrition & Water Tracker</h1>
+            <p class="date" id="currentDate"></p>
+        </header>
+
+        <div class="profile-section">
+            <h2>Daily Goals</h2>
+            <div class="goals-grid">
+                <div class="goal-input">
+                    <label>Calories</label>
+                    <input type="number" id="goalCalories" value="2000">
+                    <span>kcal</span>
+                </div>
+                <div class="goal-input">
+                    <label>Protein</label>
+                    <input type="number" id="goalProtein" value="50">
+                    <span>g</span>
+                </div>
+                <div class="goal-input">
+                    <label>Carbs</label>
+                    <input type="number" id="goalCarbs" value="250">
+                    <span>g</span>
+                </div>
+                <div class="goal-input">
+                    <label>Fat</label>
+                    <input type="number" id="goalFat" value="70">
+                    <span>g</span>
+                </div>
+                <div class="goal-input">
+                    <label>Water</label>
+                    <input type="number" id="goalWater" value="2000">
+                    <span>ml</span>
+                </div>
+            </div>
+            <button class="btn-save" onclick="saveGoals()">Save Goals</button>
+        </div>
+
+        <div class="tracker-section">
+            <div class="water-section">
+                <h2>💧 Water Intake</h2>
+                <div class="water-tracker">
+                    <div class="water-progress">
+                        <div class="water-fill" id="waterFill"></div>
+                        <div class="water-text">
+                            <span id="waterAmount">0</span> / <span id="waterGoal">2000</span> ml
+                        </div>
+                    </div>
+                    <div class="water-controls">
+                        <button onclick="addWater(250)">+250ml</button>
+                        <button onclick="addWater(500)">+500ml</button>
+                        <button onclick="addWater(750)">+750ml</button>
+                        <input type="number" id="customWater" placeholder="Custom ml">
+                        <button onclick="addCustomWater()">Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="food-section">
+                <h2>🍽️ Food Intake</h2>
+                <div class="add-food-form">
+                    <input type="text" id="foodName" placeholder="Food name">
+                    <input type="number" id="foodCalories" placeholder="Calories">
+                    <input type="number" id="foodProtein" placeholder="Protein (g)">
+                    <input type="number" id="foodCarbs" placeholder="Carbs (g)">
+                    <input type="number" id="foodFat" placeholder="Fat (g)">
+                    <button class="btn-add" onclick="addFood()">Add Food</button>
+                </div>
+
+                <div class="food-list" id="foodList"></div>
+            </div>
+        </div>
+
+        <div class="summary-section">
+            <h2>📊 Today's Summary</h2>
+            <div class="nutrients-grid">
+                <div class="nutrient-card">
+                    <h3>Calories</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressCalories"></div>
+                    </div>
+                    <p><span id="currentCalories">0</span> / <span id="targetCalories">2000</span> kcal</p>
+                    <p class="remaining" id="remainingCalories">2000 remaining</p>
+                </div>
+                <div class="nutrient-card">
+                    <h3>Protein</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressProtein"></div>
+                    </div>
+                    <p><span id="currentProtein">0</span> / <span id="targetProtein">50</span> g</p>
+                    <p class="remaining" id="remainingProtein">50g remaining</p>
+                </div>
+                <div class="nutrient-card">
+                    <h3>Carbs</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressCarbs"></div>
+                    </div>
+                    <p><span id="currentCarbs">0</span> / <span id="targetCarbs">250</span> g</p>
+                    <p class="remaining" id="remainingCarbs">250g remaining</p>
+                </div>
+                <div class="nutrient-card">
+                    <h3>Fat</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFat"></div>
+                    </div>
+                    <p><span id="currentFat">0</span> / <span id="targetFat">70</span> g</p>
+                    <p class="remaining" id="remainingFat">70g remaining</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button class="btn-reset" onclick="resetDay()">Reset Today</button>
+            <button class="btn-export" onclick="exportData()">Export Data</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
